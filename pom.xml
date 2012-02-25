@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>fsg</artifactId>
+    <groupId>com.mw</groupId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../</relativePath>
+  </parent>
+  <groupId>com.mw.fsg</groupId>
+  <artifactId>fsg-wsc</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>Marketwire Web Service Connector</name>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.google.code.gson</groupId>
+  		<artifactId>gson</artifactId>
+  		<version>2.1</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>rhino</groupId>
+  		<artifactId>js</artifactId>
+  		<version>1.7R2</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.testng</groupId>
+  		<artifactId>testng</artifactId>
+  		<version>6.3.1</version>
+  		<type>jar</type>
+  		<scope>test</scope>
+  	</dependency>
+  </dependencies>
+  <build>
+  </build>
+</project>
