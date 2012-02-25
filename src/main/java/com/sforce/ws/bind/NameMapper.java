@@ -112,31 +112,18 @@ public class NameMapper {
         if (targetNamespace.startsWith("urn:")) {
             packageName = new StringBuilder(targetNamespace.substring(4));
             packageName = reverse(packageName);
-        } else if (targetNamespace.startsWith("http://") || targetNamespace.startsWith("https://")){
-        	int skip = targetNamespace.startsWith("http://") ? 7 : 8;
-            packageName = new StringBuilder(targetNamespace.substring(skip));
-            int len = packageName.length() - 1;
-            if (packageName.charAt(len) == '/') {
-            	packageName.deleteCharAt(len);
-            }
+        } else if (targetNamespace.startsWith("http://") || targetNamespace.startsWith("https://")) {
+        	int scheme = targetNamespace.startsWith("http://") ? 7 : 8;
+        	String ns = targetNamespace.substring(scheme);
+        	String path = "";
+        	int root = ns.indexOf('/');
+        	if (root > 0 && ns.length() > root + 1) {
+        		path = ns.substring(root);
+        	}
+        	String host = ns.substring(0, root);
+            packageName = new StringBuilder(host);
             packageName = reverse(packageName);
-//           packageName = new StringBuilder(24).append("com.sforce.soap.");
-//           int slashpos = targetNamespace.lastIndexOf('/');
-//           String nsSub = targetNamespace.substring(slashpos+1);
-//           if(nsSub == null || "".equals(nsSub)) {
-//        	   String tns = targetNamespace.substring(0, slashpos);
-//        	   nsSub = tns.substring(tns.lastIndexOf('/')+1);
-//           }
-//           packageName.append(nsSub);
-            /*
-            try {
-                URI uri = new URI(targetNamespace);
-                String host = hostToPackage(uri.getHost());
-                uri.getPath();
-                packageName = new StringBuilder().append(host).append(uri.getPath());
-            } catch (URISyntaxException e) {
-            }
-            */
+            packageName.append(path);
         } else {
         	packageName = new StringBuilder(targetNamespace);
         }
